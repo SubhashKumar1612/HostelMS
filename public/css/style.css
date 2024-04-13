@@ -1,0 +1,165 @@
+* {
+    margin: 0%;
+    padding: 0%;
+  }
+  
+  body {
+    background-image: url(images/Desktopbg.png);
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .cover {
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.69);
+    opacity: 0.9;
+    z-index: 1;
+  }
+  
+  header {
+    padding-top: 10px;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #image {
+    height: 80px;
+    width: 80px;
+  }
+  #image1 {
+    height: 120px;
+    width: 120px;
+  }
+  
+  .spacing {
+    width: 150px;
+  }
+  .spacing1 {
+    width: 40px;
+  }
+  #loginbtn,
+  #backbtn {
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 12px;
+    color: rgb(255, 255, 255);
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  #loginbtn:hover,
+  #backbtn:hover {
+    background-color: rgba(196, 193, 193, 0.53);
+    color: rgb(0, 0, 0);
+  }
+  
+  main {
+    height: 90%;
+    width: 100%;
+  }
+  
+  .details {
+    height: 500px;
+    width: 800px;
+    background-color: rgba(196, 193, 193, 0.463);
+    margin-top: 40px;
+    border-radius: 20px;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  #space {
+    width: 80px;
+  }
+  
+  option {
+    border-radius: 5px;
+    background-color: #f1ead659;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    width: 250px;
+    background-color: #f1ead6;
+    border: 1px solid rgb(0, 0, 0);
+    color: #000000;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 500;
+  }
+  
+  select {
+    width: 274.8px;
+  }
+  
+  input::placeholder {
+    color: #000000;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 500;
+  }
+  
+  #registerbtn {
+    margin-top: 15px;
+    width: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+    background-color: 423e32;
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  #registerbtn:hover {
+    background-color: #f1ead6;
+    color: rgb(0, 0, 0);
+  }
+  
+  #heading {
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(0, 0, 0);
+    padding-bottom: 15px;
+  }
+  
+  #logintxt {
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    font-weight: 500;
+  }
+  /* #48b9f6; */

@@ -1,0 +1,213 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background-color: #E0F7FA;
+}
+.navbar{
+    width: 90wh;
+    height: 80px;
+    background-color: #B3E5FC;
+    display: flex;
+    align-content: center;
+    
+    
+    
+gap: 180px;
+    
+    border-radius: 20px;
+    text-align:center;
+    
+    margin-left: 100px;
+    margin-top: 20px;
+
+    
+
+}
+.logo1{
+    margin-left: 46px;
+}
+.bth{
+    background-color: #68ADED;
+    width: 100px;
+    color:black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    
+    font-size: larger;
+    border: none;
+    position: relative;
+    left: 60px;
+    box-shadow: 0 0 20px black;
+
+}
+.bth:hover{
+        
+    background-color: aqua;
+ }
+
+.login{
+    background-color:#68ADED;
+    color:black;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: larger;
+    border: none;
+    box-shadow:  0 0 20px black;
+    
+    
+
+
+}
+.login:hover{
+        
+   background-color: aqua;
+}
+h3{
+    margin-top: 20px;
+    font-weight: bolder;
+    text-shadow: 0 0 15px black;
+    font-size: 22px;
+}
+.image{
+    
+    background-image: url(Rectangle\ 19.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 80vh;
+
+
+
+    margin: 25px 0px 0px 300px ;
+    
+
+
+}
+
+
+    
+    
+.logo{
+    
+    
+    position: relative;
+    left: 23%;
+    top: 5%;
+    margin-left: 90px;
+
+    
+}
+h2{
+    font-weight: bolder;
+    position: relative;
+    left: 25%;
+    top: 9%;
+
+}
+ .outer  {
+    /* background-image: url(amico.png); */
+    
+   
+
+    display: inline-block;
+    
+    
+    background-size:90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    width: 700px;
+    height: 450px;
+    
+    flex-direction: column;
+
+    position: relative;
+    z-index: 1;
+    color: black;
+    border: none;
+    font-weight: bold;
+    
+    
+}
+
+    
+
+.inner{
+    display: flex;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin-top: 80px;
+    margin-left: 190px;
+    color: black;
+
+}
+.inner2{
+    display: flex;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin-top: 80px;
+    margin-left: 30px;
+
+
+}
+.enter{
+    background-color:rgba(28, 148, 235, 0.2);
+    border: none;
+    height: 35px;
+    width: 230px;
+    margin-top: 20px;
+    box-shadow: black 0 0 15px;
+}
+.input{
+    gap: 20px;
+}
+.register{
+    background-color:rgba(28, 148, 235, 0.2);
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    top: 70px;
+    left: 320px;
+    box-shadow: 0 0 15px black;
+    border: black 2px solid;
+    
+    
+}
+.register:hover{
+        
+    background-color: aqua;
+ }
+.logp{
+    position: relative;
+    top: 90px;
+    left: 310px;
+    
+}
+.logp a {
+    text-decoration: none;
+}
+
+  
+    
+
+
+
+

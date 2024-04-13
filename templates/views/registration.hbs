@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="cover">
+      <header>
+        <div class="container">
+          <div class="container">
+            <div class="row1">
+              <img src="images/logo.png" alt="logo" id="image" />
+            </div>
+            <div class="row1"><h1>Hostel Management System</h1></div>
+          </div>
+          <div class="spacing"></div>
+          <div class="container">
+            <div class="row1"><button id="backbtn"><a href="/">Back to Home</a></button></div>
+            <div class="spacing1"></div>
+            <div class="row1"><button id="loginbtn">Login</button></div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <form action="" method="post">
+            <div class="container">
+                <div class="details">
+                  <div class="row">
+                    <img src="images/bg.png" alt="logo" id="image1" />
+                  </div>
+                  <div class="row">
+                    <p id="heading">Register New Account</p>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" id="fname" placeholder="Name" name="name" required />
+                      <input type="number"  placeholder="Contact No." min="0" maxlength="10" name="contact" required />
+                      <input type="date" placeholder="Date of Birth" name="date" required />
+                      <input type="number" placeholder="PRN" min="0" maxlength="10" name="prn" required />
+                    </div>
+                    <div id="space"></div>
+                    <div class="col">
+                      <input type="text" placeholder="Branch" name="branch" required />
+                      <input type="number" placeholder="Year of Study" min="0" name="year" required />
+                      <input type="text" placeholder="Address" name="address" required />
+                      <select required>
+                        <option selected>Select Room Type</option>
+                        <option value="AC">AC</option>
+                        <option value="Non-A/C">Non-A/C</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <button id="registerbtn">Register</button>
+                  </div>
+                  <div class="row">
+                    <p id="logintxt">
+                      Already have an account?
+                      <a href="login.html" target="_blank">Login</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </main>
+        </form>
+    </div>
+  </body>
+</html>
