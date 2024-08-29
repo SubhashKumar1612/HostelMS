@@ -6,7 +6,10 @@ const hbs=require("hbs");
 const path=require("path");
 const bcrypt=require("bcrypt");
 const cookieParser=require("cookie-parser");
-const auth=require("./middleware/auth")
+const auth=require("./middleware/auth");
+const Leave = require("./model/leave"); // Make sure to create this model
+const CanteenRegistration = require("./model/canteen"); // Make sure to create this model
+const SportRegistration = require("./model/sports"); // Make 
 
 
 const port=process.env.port|| 3000;
@@ -27,7 +30,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
 
 app.get("/",(req,res)=>{
-    res.render("index");
+    res.render("index", { nav: "navbar" });
 })
 
 app.get("/home",(req,res)=>{
@@ -41,18 +44,136 @@ app.get("/login",(req,res)=>{
 })
 app.get("/register",(req,res)=>{
     res.render("register")
-})
-app.get("/profile",(req,res)=>{
-    res.render("profile")
+ })
+// app.get("/profile",(req,res)=>{
+//     res.render("profile")
+// })
+
+
+app.get('/edit_profile', auth, (req, res) => {
+    res.render('edit_profile', { user: req.user }); // Ensure 'edit_profile' matches your view/template name
+});
+
+app.post('/edit_profile', auth, async (req, res) => {
+    try {
+        const userId = req.user._id;
+
+        const updatedUser = await Register.findByIdAndUpdate(
+            userId,
+            {
+                name: req.body.name,
+                email: req.body.email,
+                contact: req.body.contact,
+                address: req.body.address,
+                date: req.body.date,
+                branch: req.body.branch,
+                year: req.body.year,
+                roomReference: req.body.roomReference,
+                roomNo: req.body.roomNo
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).send('User not found');
+        }
+
+        res.redirect('/profile');
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+
+
+
+// Updated profile route to fetch user data and pass it to the profile template
+app.get('/profile', auth, async (req, res) => {
+    try {
+        const user = req.user; // User data from authentication middleware
+        const complaints = await Complaint.find({ userId: user._id });
+        const leaves = await Leave.find({ userId: user._id });
+        const canteenOrders = await CanteenRegistration.find({ userId: user._id });
+        console.log(canteenOrders)
+        res.render('profile', {
+            user,
+            complaints,
+            leaves,
+            canteenOrders
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
+
+// app.get("/complainBox",(req,res)=>{
+//     res.render("complainBox", { nav: "nav" })
+// })
+app.get('/complainBox', auth, async (req, res) => {
+    try {
+        const user = await Register.findById(req.user._id);
+        res.render('complainBox', { user, nav: "nav"  }); // Assuming the form template is named 'complainBox.hbs'
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+// Route to render the canteen registration form
+app.get('/canteen', auth, async (req, res) => {
+    try {
+        // Find user details using Register model if needed
+        const user = await Register.findById(req.user.id);
+        
+        // Render the form with user details if necessary
+        res.render('canteen', { user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+// app.get("/leave",(req,res)=>{
+//     res.render("leave", { nav: "nav" })
+// })
+
+
+// In your Express route handler
+app.get('/leave', auth, async (req, res) => {
+    try {
+        // Fetch the user data from the database
+        const user = await Register.findById(req.user._id); // Adjust this according to how you get the current user
+
+        // Render the form and pass the user data
+        res.render('leave', {
+            user: {
+                rollNo: user.prn,
+                name: user.name
+            },
+            nav: "nav"  // Combine nav with the other data
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+  
+
+
+
+app.get("/sports",auth,async(req,res)=>{
+      // Find user details using Register model if needed
+      const user = await Register.findById(req.user.id);
+    res.render("sports",{user})
 })
 
-app.get("/complainBox",(req,res)=>{
-    res.render("complainBox")
-})
-
-app.get("/canteenReg",(req,res)=>{
-    res.render("canteenReg")
-})
 app.get("/secret",auth,(req,res)=>{
     // console.log(`this is my login cookies ${req.cookies.jwt}`);
     res.render("secret");
@@ -60,7 +181,7 @@ app.get("/secret",auth,(req,res)=>{
 
 app.get("/afterlogin", auth, async (req, res) => {
     try {  
-        res.render("afterlogin"); // Pass the userName to the view
+        res.render("afterlogin", { nav: "nav" }); // Pass the userName to the view
     } catch (error) {
         res.status(500).send(error);
     }
@@ -148,6 +269,132 @@ app.post("/login",async(req,res)=>{
         res.status(500).send(error);
     }
 })
+
+
+//sports
+app.post('/sports-registration',auth, async (req, res) => {
+    try {
+        const clubs = req.body;
+        const user=req.user;
+        const userId =user._id;
+
+        // if (!userId || !Array.isArray(clubs) || clubs.length === 0) {
+        //     return res.status(400).json({ message: 'User ID and selected sports are required' });
+        // }
+
+        // Create a new SportRegistration document
+        const registration = new SportRegistration({
+            userId,
+            clubs
+        });
+
+        // Save the document to the database
+        await registration.save();
+
+        // Send a success response
+        res.status(201).json({ message: 'Sports registration successful', registration });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// Handle POST request for canteen orders
+
+app.post('/canteen', auth, async (req, res) => {
+    try {
+        const { veg, NonVeg, order } = req.body;
+        const user = req.user;
+
+        console.log('Received data:', { veg, NonVeg, order });
+        console.log('User:', user);
+
+        // Ensure user ID is correctly set
+        if (!user) {
+            return res.status(401).send('User not authenticated');
+        }
+
+        // Create a new canteen registration entry
+        const newCanteenRegistration = new CanteenRegistration({
+            userId: user._id,
+            veg: veg || [], // Ensure veg is an array
+            NonVeg: NonVeg || [], // Ensure NonVeg is an array
+            order: order || ''
+        });
+
+        // Save the entry to the database
+        await newCanteenRegistration.save();
+
+        // Redirect or respond as necessary
+        res.redirect('/profile');
+    } catch (error) {
+        console.error('Error saving canteen registration:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
+
+
+
+app.post('/leave', auth, async (req, res) => {
+    try {
+        
+        const { rollNo, name, leaveDate, leaveTo, leaveReason } = req.body;
+        const user = req.user;
+
+        // Check if user is available
+        if (!user) {
+            return res.status(400).send('User not found');
+        }
+        
+        const newLeave = new Leave({
+            rollNo,
+            name,
+            leaveDate,
+            leaveTo,
+            leaveReason,
+            userId: user._id // Use userId instead of refId
+        });
+        
+        await newLeave.save();
+        res.redirect('/profile'); // Adjust redirect as needed
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
+const Complaint = require("./model/complaints"); // Import the Complaint model
+
+// POST method for submitting a complaint
+app.post('/complainBox', auth, async (req, res) => {
+    try {
+        const { category, message } = req.body;
+
+        // Retrieve the user from the database using the authenticated user's ID
+        const user = await Register.findById(req.user._id);
+
+        // Create a new complaint document
+        const newComplaint = new Complaint({
+            category,
+            message,
+            userId: user._id
+        });
+
+        // Save the complaint to the database
+        await newComplaint.save();
+
+        // Redirect to a success page or handle the response as needed
+        res.redirect('/profile'); // Adjust redirect as needed
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 app.listen(port,()=>{

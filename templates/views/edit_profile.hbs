@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body style="background-color: #E3E9FF">
+    <header>
+        <!-- Header content --> {{>nav}}
+    </header>
+    <aside></aside>
+    <div style="margin-left: 5.2%;">
+        <img src="css/Square Image.png" width="1360px" height="630"/> <!-- Square Image -->
+        <div class="top-left">EDIT PROFILE</div>
+        
+        <form action="/edit_profile" method="POST">
+            <div>
+                <table class="form1">
+                    <tr>
+                        <td><label for="prn">PRN:</label></td>
+                        <td><input type="text" id="prn" name="prn" value="{{user.prn}}" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" id="name" name="name" value="{{user.name}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" name="email" value="{{user.email}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tel">Contact No:</label></td>
+                        <td><input type="tel" id="tel" name="contact" value="{{user.contact}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Address:</label></td>
+                        <td>
+                            <input type="text" id="address" name="address" value="{{user.address}}" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="form2">
+                    <tr>
+                        <td><label for="DOB">DOB:</label></td>
+                        <td><input type="date" id="DOB" name="date" value="{{user.date}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Branch">Branch:</label></td>
+                        <td><input type="text" id="Branch" name="branch" value="{{user.branch}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Year">Year:</label></td>
+                        <td><input type="text" id="Year" name="year" value="{{user.year}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="roomReference">Room Reference:</label></td>
+                        <td><input type="text" id="roomReference" name="roomReference" value="{{user.roomReference}}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="roomNo">Room No:</label></td>
+                        <td><input type="text" id="roomNo" name="roomNo" value="{{user.roomNo}}" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <button type="submit">Update Profile</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <!-- Footer content -->
+    </footer>
+</body>
+</html>

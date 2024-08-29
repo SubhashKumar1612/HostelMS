@@ -13,38 +13,14 @@
     />
   </head>
   <body>
-    <header>
-      <div class="image">
-        <img src="../images/bg.png" id="image" />
-      </div>
-      <div class="nav">
-        <ul>
-          <li><a href="/home">Home</a></li>
-          <li><a href="/features">Features</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/about">About Us</a></li>
-        </ul>
-      </div>
-      <div class="adj"></div>
-      <div class="nav-search">
-        <div class="search">
-          <input type="text" placeholder="Search" id="search" />
-        </div>
-        <div id="prof">
-          <button id="prof1">
-            <img src="../images/profile.png" id="profile-img" />
-          </button>
-        </div>
-      </div>
-    </header>
+    {{>nav}}
     <main>   
       <nav>
         <div class="intro">
           <div class="greeting">
             <div class="identity">
               <h3 class="welcome" id="msg">Welcome,</h3>
-              <p class="welcome" id="userid">Username</p>
+              <p class="welcome" id="userid">{{userName}}</p>
             </div>
           </div>
             <div class="greeting1">

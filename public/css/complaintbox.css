@@ -228,7 +228,12 @@
   .category {
     font-size: 30px;
   }
-  
+  .message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
   .row {
     display: flex;
     justify-content: center;
@@ -262,7 +267,8 @@
     border-radius: 10px;
     border: none;
     height: 200px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
   }
   
   button {

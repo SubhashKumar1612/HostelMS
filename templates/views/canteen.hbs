@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canteen Registration</title>
+    <link rel="stylesheet" href="css/canteen.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap"
+        rel="stylesheet"
+    />
+</head>
+<body>
+    <header>
+        <div class="image">
+            <img src="../images/bg.png" id="image" />
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/about">About Us</a></li>
+            </ul>
+        </div>
+        <div class="adj"></div>
+        <div class="nav-search">
+            <div class="search">
+                <input type="text" placeholder="Search" id="search" />
+            </div>
+            <div id="prof">
+                <button id="prof1">
+                    <img src="../images/profile.png" id="profile-img" />
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav>
+            <div class="intro">
+                <div class="greeting">
+                    <div class="identity">
+                        <h3 class="welcome" id="msg">Welcome,</h3>
+                        <p class="welcome" id="userid">{{user.name}}</p>
+                    </div>
+                </div>
+                <div class="greeting1">
+                    <div class="identity1">
+                        <button class="welcome" id="Logoutbtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="container">
+                <!-- Form Starts Here -->
+                <form action="/canteen" method="POST">
+                    <div class="row">
+                        <div class="col" id="food"><p>Food</p></div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" name="meal[]" value="Breakfast" />
+                                <p>Breakfast</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" name="meal[]" value="Lunch" />
+                                <p>Lunch</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" name="meal[]" value="Dinner" />
+                                <p>Dinner</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" id="menu"><p>Canteen Food</p></div>
+                        <div class="col"><p>Menu-1</p></div>
+                        <div class="col"><p>Menu-2</p></div>
+                        <div class="col"><p>Menu-3</p></div>
+                    </div>
+
+                    <!-- Veg options -->
+                    <div class="row">
+                        <div class="col"><p>Veg</p></div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="veg[]" value="Tea, Bread, Butter/Jam" />
+                                <p>Tea, Bread, Butter/Jam</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="veg[]" value="Mix-Veg, Chappati, Rice, Dal" />
+                                <p>Mix-Veg, Chappati, Rice, Dal</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="veg[]" value="Aloo Gobi, Chappati, Rice, Dal" />
+                                <p>Aloo Gobi, Chappati, Rice, Dal</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Non-Veg options -->
+                    <div class="row">
+                        <div class="col"><p>Non-Veg</p></div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="NonVeg[]" value="Tea, Egg Roll, Bread Butter/Jam" />
+                                <p>Tea, Egg Roll, Bread Butter/Jam</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="NonVeg[]" value="Chicken Korma, Chappati, Rice" />
+                                <p>Chicken Korma, Chappati, Rice</p>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label>
+                                <input type="checkbox" class="checkbox" name="NonVeg[]" value="Chicken Curry, Rice, Eggs" />
+                                <p>Chicken Curry, Rice, Eggs</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="row">
+                        <button id="order" name="order" type="submit">Order</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Clear form data on page load
+        window.onload = function() {
+            // document.querySelector('form').reset();
+        };
+
+        // Add confirmation before submission
+        document.querySelector('form').onsubmit = function() {
+            return confirm('Are you sure you want to submit the form?');
+        };
+    </script>
+</body>
+</html>

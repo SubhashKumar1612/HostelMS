@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Form</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/Rform.css">
+</head>
+<body>
+    {{> nav}} <!-- Ensure this partial exists -->
+    <div class="container grid grid-two--cols">
+        <div class="section-hero--content">
+            <h1 class="hero-heading">Hostel Management System</h1>
+            <div class="container1">
+                <div class="title">
+                    <h1 class="header">Leave Form</h1>
+                </div>
+                <br>
+                <form id="leave-form" action="/leave" method="POST">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <label for="roll-no" class="details">Roll-No:</label>
+                            <input type="number" id="roll-no" name="rollNo" value="{{user.rollNo}}" required>
+                        </div>
+                        <br>
+                        <div class="input-box">
+                            <label for="name" class="details">Name:</label>
+                            <input type="text" id="name" name="name" value="{{user.name}}" required>
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <label for="leave-date" class="details">Leave Date:</label>
+                            <input type="date" id="leave-date" name="leaveDate" required>
+                        </div>
+                        <br>
+                        <div class="input-box">
+                            <label for="leave-to" class="details">Leave To:</label>
+                            <input type="text" id="leave-to" name="leaveTo" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="leave-reason" class="details">Leave Reason:</label>
+                            <input type="text" id="leave-reason" name="leaveReason" required>
+                        </div>
+                    </div>
+                    <div class="hero-btn">
+                        <button type="submit" class="btn btn-white">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="section-hero--image">
+            <figure>
+                <img src="/leaveform.png" alt="sticker">
+            </figure>
+        </div>
+    </div>
+</body>
+</html>

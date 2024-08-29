@@ -42,6 +42,16 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    //new fileds
+    address: {
+        type: String
+    },
+    roomNo: {
+      type: Number
+    },
+    year: {
+      type: Number
+    },
     confirmPassword: {
         type: String,
         required: true
